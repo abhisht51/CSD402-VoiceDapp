@@ -17,7 +17,7 @@ const UserContext = createContext();
 // });
 const gun = Gun({
   peers: [
-    "https://gun-server-app.herokuapp.com/gun",
+    // "https://gun-server-app.herokuapp.com/gun",
     // "http://localhost:3030/gun",
     // "http://f1468e19e0c4.ngrok.io/gun",
   ],
@@ -49,10 +49,7 @@ const UserProvider = (props) => {
       .get("courses")
       .map()
       .on(function (courseObject, id) {
-        if (
-          courseObject &&
-          !JSON.stringify(channels).includes(courseObject.courseCode)
-        ) {
+        if (courseObject) {
           setChannels((oldData) => [
             ...oldData,
             {

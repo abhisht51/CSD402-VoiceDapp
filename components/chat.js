@@ -7,7 +7,6 @@ import { UserContext } from "../context/userContext";
 import { useContext, useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 
-
 import { DyteMeeting } from "dyte-client";
 import { createRoom, joinExistingRoom, joinRoom } from "../utils/utils";
 const orgId = process.env.NEXT_PUBLIC_DYTE_ORG_ID;
@@ -47,8 +46,8 @@ function Chat({ selectedChannel }) {
   const sendMessage = async (e) => {
     e && e.preventDefault();
 
-    const secret = await SEA.encrypt(newMessage, ENCRYPTION_KEY);
-    const message = user.get("all").set({ what: secret });
+    // const secret = await SEA.encrypt(newMessage, ENCRYPTION_KEY);
+    const message = user.get("all").set({ what: newMessage });
     const index = new Date().toISOString();
     appRef.get(`${channelCode}`).get(index).put(message);
     setNewMessage("");
@@ -69,16 +68,16 @@ function Chat({ selectedChannel }) {
           );
           if (data) {
             let type;
-            gun
-              .get("gun-chat")
+            appRef
               .get(`${messageUser}`)
               .get("profile")
-              .get("userType");
+              .get("userType")
+              .once((userType) => (type = userType));
             let message = {
               id: id,
               who: messageUser,
               type: type,
-              what: (await SEA.decrypt(data.what, ENCRYPTION_KEY)) + "",
+              what: data.what,
               when: GUN.state.is(data, "what"),
             };
             if (message.what && !messageIds.includes(id)) {
