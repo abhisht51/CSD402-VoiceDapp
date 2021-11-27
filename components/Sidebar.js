@@ -42,7 +42,7 @@ function Sidebar({ selectedChannel }) {
       .once((v) => {
         if (v) setUserType(v);
       });
-  }, [username, gun]);
+  }, []);
 
   return (
     <div className={styles.sidebar}>

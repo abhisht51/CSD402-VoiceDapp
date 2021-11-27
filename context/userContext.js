@@ -43,13 +43,17 @@ const UserProvider = (props) => {
     console.log(channels);
   }, [channels]);
 
+  const thisCourseExists = (courseCode) => {
+    return !!channels.find((channel) => channel.channelCode === courseCode);
+  }
+
   function getData() {
     setChannels([]);
     appRef
       .get("courses")
       .map()
       .on(function (courseObject, id) {
-        if (courseObject) {
+        if (courseObject && !thisCourseExists(courseObject.courseCode)) {
           setChannels((oldData) => [
             ...oldData,
             {
