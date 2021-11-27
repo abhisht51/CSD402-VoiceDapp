@@ -10,6 +10,7 @@ const gun = Gun([
   "https://csd-402-voice-dapp.vercel.app",
   "https://csd-402-voice-dapp-abhisht51.vercel.app",
   // "http://localhost:3000",
+  "https://voice-gunapp.herokuapp.com",
   "http://gun-manhattan.herokuapp.com/gun",
 ]);
 // csd-402-voice-dapp-git-main-abhisht51.vercel.app
