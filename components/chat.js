@@ -20,6 +20,7 @@ function Chat({ selectedChannel }) {
     appRef,
     loggedinState: { loggedin },
     channels,
+    usernameState: { username },
     selectedChannelState: { selectedChannelstate, setSelectedChannel },
   } = useContext(UserContext);
 
@@ -47,9 +48,12 @@ function Chat({ selectedChannel }) {
     e && e.preventDefault();
 
     // const secret = await SEA.encrypt(newMessage, ENCRYPTION_KEY);
-    const message = user.get("all").set({ what: newMessage });
+    // const message = user.get("all").set({ what: newMessage, who: username });
     const index = new Date().toISOString();
-    appRef.get(`${channelCode}`).get(index).put(message);
+    appRef
+      .get(`${channelCode}`)
+      .get(index)
+      .put({ what: newMessage, who: username });
     setNewMessage("");
   };
 
@@ -61,22 +65,15 @@ function Chat({ selectedChannel }) {
       .map()
       .on(
         async function (data) {
-          const messageUser = await gun.user(data).get("alias");
+          // const messageUser = await gun.user(data).get("alias");
           const id = data["_"]["#"].substring(
             data["_"]["#"].indexOf("/") + 1,
             data["_"]["#"].length
           );
           if (data) {
-            let type;
-            appRef
-              .get(`${messageUser}`)
-              .get("profile")
-              .get("userType")
-              .once((userType) => (type = userType));
             let message = {
               id: id,
-              who: messageUser,
-              type: type,
+              who: data.who,
               what: data.what,
               when: GUN.state.is(data, "what"),
             };
