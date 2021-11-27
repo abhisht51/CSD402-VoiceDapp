@@ -39,6 +39,10 @@ const UserProvider = (props) => {
   const [selectedChannelstate, setSelectedChannel] = useState();
   let [meetingAuthToken, setMeetingAuthToken] = useState("");
 
+  useEffect(() => {
+    console.log(channels);
+  }, [channels]);
+
   function getData() {
     setChannels([]);
     appRef
