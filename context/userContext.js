@@ -5,8 +5,16 @@ import { createContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
 
-const gun = Gun();
-
+const gun = Gun([
+  "https://csd-402-voice-dapp-git-main-abhisht51.vercel.app",
+  "https://csd-402-voice-dapp.vercel.app",
+  "https://csd-402-voice-dapp-abhisht51.vercel.app",
+  // "http://localhost:3000",
+  "http://gun-manhattan.herokuapp.com/gun",
+]);
+// csd-402-voice-dapp-git-main-abhisht51.vercel.app
+// csd-402-voice-dapp.vercel.app
+// csd-402-voice-dapp-abhisht51.vercel.app
 const UserProvider = (props) => {
   const router = useRouter();
 
