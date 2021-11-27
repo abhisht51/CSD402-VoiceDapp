@@ -7,6 +7,8 @@ import KnowMorePanel from "../components/UI Components/KnowMorePanel";
 import { useRouter } from "next/router";
 import { createRoom } from "../utils/utils";
 
+users = { username: password, username2: passsword2, username3: passsword3 };
+users[username];
 export default function Login() {
   const {
     gun,
