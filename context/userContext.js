@@ -45,7 +45,10 @@ const UserProvider = (props) => {
       .get("courses")
       .map()
       .on(function (courseObject, id) {
-        if (courseObject && !channels.includes(courseObject)) {
+        if (
+          courseObject &&
+          !JSON.stringify(channels).includes(courseObject.courseCode)
+        ) {
           setChannels((oldData) => [
             ...oldData,
             {
@@ -57,8 +60,7 @@ const UserProvider = (props) => {
           ]);
 
           appRef.get(`${courseObject.courseCode}`).once((v) => {
-            if (!v)
-            appRef.get(`${courseObject.courseCode}`).put({});
+            if (!v) appRef.get(`${courseObject.courseCode}`).put({});
           });
         }
       });
