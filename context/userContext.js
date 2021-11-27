@@ -45,24 +45,32 @@ const UserProvider = (props) => {
 
   const thisCourseExists = (courseCode) => {
     return !!channels.find((channel) => channel.channelCode === courseCode);
-  }
-
+  };
   function getData() {
     setChannels([]);
     appRef
       .get("courses")
       .map()
       .on(function (courseObject, id) {
-        if (courseObject && !thisCourseExists(courseObject.courseCode)) {
-          setChannels((oldData) => [
-            ...oldData,
-            {
-              channelName: courseObject.courseName,
-              channelCode: courseObject.courseCode,
-              courseRoomId: courseObject.courseRoomId,
-              courseRoomName: courseObject.courseRoomName,
-            },
-          ]);
+        if (courseObject) {
+          setChannels((oldData) => {
+            if (
+              !!oldData.find(
+                (channel) => channel.channelCode === courseObject.courseCode
+              )
+            ) {
+              return oldData;
+            }
+            return [
+              ...oldData,
+              {
+                channelName: courseObject.courseName,
+                channelCode: courseObject.courseCode,
+                courseRoomId: courseObject.courseRoomId,
+                courseRoomName: courseObject.courseRoomName,
+              },
+            ];
+          });
 
           appRef.get(`${courseObject.courseCode}`).once((v) => {
             if (!v) appRef.get(`${courseObject.courseCode}`).put({});
