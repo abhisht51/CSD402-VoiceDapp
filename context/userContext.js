@@ -44,7 +44,7 @@ const UserProvider = (props) => {
       .get("courses")
       .map()
       .on(function (courseObject, id) {
-        if (courseObject) {
+        if (courseObject && !channels.includes(courseObject)) {
           setChannels((oldData) => [
             ...oldData,
             {
