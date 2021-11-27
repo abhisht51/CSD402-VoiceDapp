@@ -7,16 +7,6 @@ const UserContext = createContext();
 
 const gun = Gun();
 
-const getAllUserIds = async () => {
-  const ids = await gun.get("gun-chat").get("users");
-
-  return Object.keys(ids).map((id) => ({
-    params: {
-      id: id,
-    },
-  }));
-};
-
 const UserProvider = (props) => {
   const router = useRouter();
 
@@ -26,6 +16,7 @@ const UserProvider = (props) => {
   const [loggedin, setLoggedin] = useState(false);
   const [username, setUsername] = useState("");
   const [selectedChannelstate, setSelectedChannel] = useState();
+  let [meetingAuthToken, setMeetingAuthToken] = useState("");
 
   function getData() {
     setChannels([]);
@@ -40,6 +31,8 @@ const UserProvider = (props) => {
             {
               channelName: courseObject.courseName,
               channelCode: courseObject.courseCode,
+              courseRoomId: courseObject.courseRoomId,
+              courseRoomName: courseObject.courseRoomName,
             },
           ]);
 
@@ -97,6 +90,7 @@ const UserProvider = (props) => {
         loggedinState: { loggedin, setLoggedin },
         usernameState: { username, setUsername },
         selectedChannelState: { selectedChannelstate, setSelectedChannel },
+        meetingAuth: { meetingAuthToken, setMeetingAuthToken },
       }}
     >
       {props.children}

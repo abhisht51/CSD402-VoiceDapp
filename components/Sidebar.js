@@ -12,8 +12,9 @@ import SidebarChannel from "./SidebarChannel";
 import Avatar from "./Avatar";
 import { UserContext } from "../context/userContext";
 import { useContext, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import Link from "next/link";
+import { joinRoom } from "../utils/utils";
 
 function Sidebar({ selectedChannel }) {
   const {
@@ -21,6 +22,7 @@ function Sidebar({ selectedChannel }) {
     channels,
     selectedChannelState: { setSelectedChannel },
     usernameState: { username },
+    meetingAuth: { setMeetingAuthToken },
   } = useContext(UserContext);
 
   const [userType, setUserType] = useState("");
@@ -80,11 +82,25 @@ function Sidebar({ selectedChannel }) {
         </div>
 
         <div className={styles.sidebar__voiceIcons}>
-          <Link href="/videocall">
+          <button
+            onClick={async () => {
+              joinRoom(
+                selectedChannel.courseRoomId,
+                selectedChannel.courseRoomName,
+                userType === "professor"
+              )
+                .then((authToken) => {
+                  setMeetingAuthToken(authToken);
+                })
+                .then(() => {
+                  router.push("/videocall");
+                });
+            }}
+          >
             <a>
               <FaPhoneAlt className={styles.right_icons} />
             </a>
-          </Link>
+          </button>
         </div>
       </div>
 
