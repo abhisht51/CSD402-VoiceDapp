@@ -23,6 +23,8 @@ const gun = Gun({
   ],
 });
 
+const appRef = gun.get("gun-chat");
+
 // csd-402-voice-dapp-git-main-abhisht51.vercel.app
 // csd-402-voice-dapp.vercel.app
 // csd-402-voice-dapp-abhisht51.vercel.app
@@ -39,8 +41,7 @@ const UserProvider = (props) => {
 
   function getData() {
     setChannels([]);
-    gun
-      .get("gun-chat")
+    appRef
       .get("courses")
       .map()
       .on(function (courseObject, id) {
@@ -55,13 +56,10 @@ const UserProvider = (props) => {
             },
           ]);
 
-          gun
-            .get("gun-chat")
-            .get(`${courseObject.courseCode}`)
-            .once((v) => {
-              if (!v)
-                gun.get("gun-chat").get(`${courseObject.courseCode}`).put({});
-            });
+          appRef.get(`${courseObject.courseCode}`).once((v) => {
+            if (!v)
+            appRef.get(`${courseObject.courseCode}`).put({});
+          });
         }
       });
   }
@@ -70,8 +68,7 @@ const UserProvider = (props) => {
     user.get("alias").on((v) => {
       setUsername(v);
 
-      gun
-        .get("gun-chat")
+      appRef
         .get("users")
         .get(`${v}`)
         .get("profile")
@@ -103,6 +100,7 @@ const UserProvider = (props) => {
     <UserContext.Provider
       value={{
         gun,
+        appRef,
         profile,
         user,
         channels,

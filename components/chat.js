@@ -18,6 +18,7 @@ function Chat({ selectedChannel }) {
   const {
     user,
     gun,
+    appRef,
     loggedinState: { loggedin },
     channels,
     selectedChannelState: { selectedChannelstate, setSelectedChannel },
@@ -26,8 +27,6 @@ function Chat({ selectedChannel }) {
   let channelCode = selectedChannel && selectedChannel.channelCode;
 
   const router = useRouter();
-
-  const appRef = gun.get("gun-chat");
 
   const [newMessage, setNewMessage] = useState("");
   const [allMessages, setAllMessages] = useState([]);

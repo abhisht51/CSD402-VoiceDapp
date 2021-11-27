@@ -10,6 +10,7 @@ import { createRoom } from "../utils/utils";
 export default function Login() {
   const {
     gun,
+    appRef,
     user,
     loggedinState: { setLoggedin },
     usernameState: { setUsername },
@@ -53,7 +54,7 @@ export default function Login() {
       if (err) {
         alert(err);
       } else {
-        gun.get("gun-chat").get("users").get(`${username}`).get("profile").put({
+        appRef.get("users").get(`${username}`).get("profile").put({
           name: username,
           userType: role,
         });
@@ -64,7 +65,7 @@ export default function Login() {
           const { id, roomName } = createRoomResp.meeting;
 
           console.log("room details:", id, roomName);
-          gun.get("gun-chat").get("courses").set({
+          appRef.get("courses").set({
             courseName: courseName,
             courseCode: courseCode,
             courseRoomName: roomName,
