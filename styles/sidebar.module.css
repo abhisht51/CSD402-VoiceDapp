@@ -1,0 +1,155 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 0.25;
+    height: 100vh;
+    background-color: var(--light-grey);
+}
+
+.sidebar__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--light-grey);
+    color: white;
+    border-bottom: 3px solid var(--dark-grey);
+}
+
+.icon {
+    color: white;
+}
+
+.sidebar__channels {
+    flex: 1;
+}
+
+.sidebar__addChannel {
+    cursor: pointer;
+}
+
+.sidebar__addChannel:hover {
+    color: white;
+}
+
+.sidebar__channelsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #2f3135;
+    color: gray;
+}
+
+.sidebar__header {
+    display: flex;
+    align-items: center;
+}
+
+.sidebarChannel_selected {
+    color: white;
+    background-color: #303631;
+}
+
+.sidebarChannel_selected:hover>h4 {
+    color: white;
+    background-color: #40464b;
+}
+
+.sidebarChannel:hover>h4 {
+    color: white;
+    background-color: #40464b;
+}
+
+.sidebarChannel_selected>h4 {
+    display: flex;
+    padding-left: 15px;
+    align-items: center;
+    background-color: #40464b;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebarChannel>h4 {
+    display: flex;
+    padding-left: 15px;
+    align-items: center;
+    background-color: #2f3135;
+    color: gray;
+    cursor: pointer;
+}
+
+.sidebarChannel__hash {
+    font-size: 30px;
+    padding: 8px;
+}
+
+.sidebar__voice {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: gray;
+    background-color: #2f3135;
+    padding: 10px;
+    border-top: 1px solid gray;
+}
+
+.sidebar__voiceInfo {
+    flex: 1;
+    padding: 10px;
+}
+
+.sidebar__voiceIcon {
+    color: #4fb185;
+    font-size: 1.7rem;
+}
+
+.sidebar__voiceInfo>h3 {
+    color: #4fb185;
+}
+
+.sidebar__voiceInfo>p {
+    font-size: smaller;
+}
+
+.right_icons{
+    color: #4fb185;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.right_icons:hover{
+    scale: 1.4;
+}
+
+.sidebar__voiceIcons{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    justify-content: space-between;
+}
+
+.sidebar__profile{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: gray;
+    background-color: #2f3135;
+    padding: 10px;
+    border-top: 1px solid gray;
+}
+
+.sidebar__profileInfo{
+    color: white;
+}
+
+.sidebar__profileInfo > p{
+    color: gray;
+}
+
+.logo{
+    font-weight: bold;
+    font-size: 25px;
+}

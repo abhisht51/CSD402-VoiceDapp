@@ -1,0 +1,15 @@
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: var(--pop-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(256, 256, 256, 0.3);
+}
+
+.avatar__text {
+  color: white;
+  text-align: center;
+}

@@ -1,0 +1,152 @@
+.chat {
+    display: flex;
+    flex-direction: column;
+    flex: 0.75;
+    background-color: #363a3f;
+    height: 100vh;
+}
+
+.chatHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: gray;
+    padding: 10px;
+}
+
+.chatHeader__hash {
+    color: gray;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.chatHeader__left>h3 {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.chatHeader__right {
+    display: flex;
+    align-items: center;
+    flex: 0.4;
+    justify-content: space-between;
+}
+
+.chatHeader__right>.chatHeader__icons {
+    padding: 5px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.chatHeader__right>.chatHeader__icons:hover {
+    color: white;
+}
+
+.chatHeader__search {
+    display: flex;
+    align-items: center;
+    color: gray;
+    background-color: #2F3135;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+.chatHeader__search>input {
+    background: transparent;
+    outline-width: 0;
+    color: white;
+    padding: 5px;
+    border: none;
+}
+
+.chat__input {
+    color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+    border-top: 1px solid gray;
+    background-color: #474b53;
+}
+
+.chat__input>form>input {
+    padding: 5px;
+    background: transparent;
+    border: none;
+    outline-width: 0;
+    color: white;
+    font-size: large;
+    width: 100%;
+}
+
+.chat__input>form {
+    flex: 1;
+}
+
+.chat__inputButton {
+    display: none;
+}
+
+.chat__inputIcons>.chat__inputIcon,.chat__input__icon {
+    padding: 5px;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.chat__input__icon:hover,.chat__inputIcon:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.chat_messages {
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.chat_messages::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+}
+
+.chat_messages::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: transparent;
+}
+
+.chat_messages::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: var(--pop-blue);
+}
+
+.message{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    color: white;
+}
+
+.message__info{
+    margin-left: 20px;
+}
+
+.message__timestamp{
+    color: gray;
+    margin-left: 20px;
+    font-size: x-small;
+}
+
+.send_message_input{
+    border: none;
+    background: #474b53;
+    color: white;
+    width: 60vw;
+    display: block;
+    padding: 5px;
+}
