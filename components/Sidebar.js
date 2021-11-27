@@ -92,7 +92,7 @@ function Sidebar({ selectedChannel }) {
         <Avatar name={username} sidebar={true} />
         <div className={styles.sidebar__profileInfo}>
           <h3>{username}</h3>
-          <p>#{userType}</p>
+          <p>{userType}</p>
         </div>
       </div>
     </div>

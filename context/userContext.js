@@ -17,15 +17,6 @@ const getAllUserIds = async () => {
   }));
 };
 
-const getUserProfiles = async (userid) => {
-  const profileData = await gun
-    .get("gun-chat")
-    .get("users")
-    .get(`${userid}`)
-    .get("profile");
-  return profileData;
-};
-
 const UserProvider = (props) => {
   const router = useRouter();
 
@@ -76,7 +67,7 @@ const UserProvider = (props) => {
           setProfile(data);
         });
 
-      router.push("/chat");
+      router.push("/chatpage");
     });
 
     gun.on("auth", async (event) => {
@@ -114,4 +105,4 @@ const UserProvider = (props) => {
 };
 
 export default UserProvider;
-export { UserContext, getAllUserIds, getUserProfiles };
+export { UserContext };

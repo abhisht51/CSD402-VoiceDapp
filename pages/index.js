@@ -39,7 +39,7 @@ export default function Home() {
     // console.log("alias",alias);
 
     if (loggedin) {
-      router.push("/chat");
+      router.push("/chatpage");
       // console.log(alias);
     } else {
       // console.log("no alias");

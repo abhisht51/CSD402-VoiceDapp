@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/userContext";
 import KnowMorePanel from "../components/UI Components/KnowMorePanel";
 import { useRouter } from "next/router";
+import { createRoom } from "../utils/utils";
 
 export default function Login() {
   const {
@@ -35,7 +36,7 @@ export default function Login() {
       } else {
         setLoggedin(true);
         setUsername(username);
-        router.push("/chat");
+        router.push("/chatpage");
       }
     });
   }
@@ -46,7 +47,7 @@ export default function Login() {
       return;
     }
 
-    user.create(username, password, (props) => {
+    user.create(username, password, async (props) => {
       console.log(props);
       const { err } = props;
       if (err) {
@@ -58,9 +59,16 @@ export default function Login() {
         });
 
         if (role === "professor") {
+          // Create new Dyte meeting room
+          const createRoomResp = await createRoom(courseCode);
+          const { id, roomName } = createRoomResp.meeting;
+
+          console.log("room details:", id, roomName);
           gun.get("gun-chat").get("courses").set({
             courseName: courseName,
             courseCode: courseCode,
+            courseRoomName: roomName,
+            courseRoomId: id,
           });
         }
 
