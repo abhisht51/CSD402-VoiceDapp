@@ -2,16 +2,9 @@ import React from "react";
 import styles from "../styles/chat.module.css";
 import ChatHeader from "../components/ChatHeader";
 import Message from "../components/Message";
-import { FaSmile } from "react-icons/fa";
 import { UserContext } from "../context/userContext";
 import { useContext, useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
-
-import { DyteMeeting } from "dyte-client";
-import { createRoom, joinExistingRoom, joinRoom } from "../utils/utils";
-const orgId = process.env.NEXT_PUBLIC_DYTE_ORG_ID;
-
-const ENCRYPTION_KEY = "#encryptionkey";
 
 function Chat({ selectedChannel }) {
   const {
@@ -98,10 +91,6 @@ function Chat({ selectedChannel }) {
     getMessages();
   }, [selectedChannelstate]);
 
-  const handleChatOnclick = async () => {
-    console.log("chatOnclick");
-  };
-
   return (
     <div className={styles.chat}>
       <ChatHeader
@@ -135,11 +124,7 @@ function Chat({ selectedChannel }) {
           />
         </div>
 
-        <div className={styles.chat__inputIcons}>
-          <button onClick={handleChatOnclick}>
-            <FaSmile className={styles.chat__inputIcon} fontSize="large" />
-          </button>
-        </div>
+        <div className={styles.chat__inputIcons}></div>
       </div>
     </div>
   );

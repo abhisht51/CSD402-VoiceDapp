@@ -54,7 +54,6 @@ function Sidebar({ selectedChannel }) {
           <div className={styles.sidebar__header}>
             <h4>Text Channels</h4>
           </div>
-          <FaPlus className={styles.sidebar__addChannel} />
         </div>
         <div className={styles.sidebar__channelsList}>
           {channels.map((channel, index) => (
