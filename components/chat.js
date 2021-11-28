@@ -98,25 +98,12 @@ function Chat({ selectedChannel }) {
     getMessages();
   }, [selectedChannelstate]);
 
-  const [title, setTitle] = useState("testTitle");
-  const [authToken, setAuthToken] = useState("");
-  const [roomName, setRoomName] = useState("");
+  const handleChatOnclick = async () => {
+    console.log("chatOnclick");
+  };
 
   return (
     <div className={styles.chat}>
-      {authToken && roomName && (
-        <DyteMeeting
-          onInit={(meeting) => {
-            console.log("Init meeting component");
-          }}
-          clientId={orgId} // orgId || clientId
-          meetingConfig={{
-            roomName: roomName,
-            authToken: authToken,
-            apiBase: "https://api.cluster.dyte.in",
-          }}
-        />
-      )}
       <ChatHeader
         allMessages={allMessages}
         setIsFiltering={setIsFiltering}
@@ -149,20 +136,7 @@ function Chat({ selectedChannel }) {
         </div>
 
         <div className={styles.chat__inputIcons}>
-          <button
-            onClick={async () => {
-              /** Creating a room with a room title */
-              const createRoomResp = await createRoom(title);
-              const { id, roomName } = createRoomResp.meeting;
-
-              /** we use meeting id, roomName (different from title) to join a room
-               * the third param is for role. i.e host or not etc
-               */
-              const authToken = await joinRoom(id, roomName, true);
-              setRoomName(roomName);
-              setAuthToken(authToken);
-            }}
-          >
+          <button onClick={handleChatOnclick}>
             <FaSmile className={styles.chat__inputIcon} fontSize="large" />
           </button>
         </div>

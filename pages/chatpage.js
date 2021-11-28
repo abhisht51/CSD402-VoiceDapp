@@ -12,8 +12,6 @@ export default function ChatPage() {
   } = useContext(UserContext);
 
   let selectedChannel = selectedChannelstate;
-  // console.log(selectedChannel);
-
   const router = useRouter();
 
   return (

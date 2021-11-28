@@ -1,33 +1,19 @@
 import Gun from "gun";
 import "gun/sea";
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
 
-// const gun = Gun({
-//   peers: [
-//     // "https://csd-402-voice-dapp-git-main-abhisht51.vercel.app",
-//     // "https://csd-402-voice-dapp.vercel.app",
-//     // "https://csd-402-voice-dapp-abhisht51.vercel.app",
-//     "http://localhost:3000",
-//     "https://94809fc24c17.ngrok.io",
-//     // "http://gun-manhattan.herokuapp.com/gun",
-//   ],
-// });
 const gun = Gun({
   peers: [
     "https://gun-server-app.herokuapp.com/gun",
-    // "http://localhost:3030/gun",
-    // "http://f1468e19e0c4.ngrok.io/gun",
+    // , "http://localhost:3000"
   ],
 });
 
 const appRef = gun.get("gun-chat");
 
-// csd-402-voice-dapp-git-main-abhisht51.vercel.app
-// csd-402-voice-dapp.vercel.app
-// csd-402-voice-dapp-abhisht51.vercel.app
 const UserProvider = (props) => {
   const router = useRouter();
 
@@ -43,9 +29,6 @@ const UserProvider = (props) => {
     console.log(channels);
   }, [channels]);
 
-  const thisCourseExists = (courseCode) => {
-    return !!channels.find((channel) => channel.channelCode === courseCode);
-  };
   function getData() {
     setChannels([]);
     appRef
