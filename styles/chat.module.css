@@ -150,3 +150,7 @@
     display: block;
     padding: 5px;
 }
+
+.searchTerm {
+    @apply bg-gray-900 border-2 rounded border-gray-600;
+}

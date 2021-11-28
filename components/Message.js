@@ -32,6 +32,7 @@ function Message({ message, searchTerm }) {
     what.toLowerCase().includes(searchTerm.toLowerCase())
   ) {
     const splitTerms = what.split(searchTerm);
+    console.log(splitTerms);
     FilterTerm = (
       <>
         {splitTerms.map((term, index) => {
@@ -39,7 +40,7 @@ function Message({ message, searchTerm }) {
             <React.Fragment key={index}>
               {term}
               {index !== splitTerms.length - 1 && (
-                <span className="bg-gray-900 border-2 rounded border-gray-600">{searchTerm}</span>
+                <span className={styles.searchTerm}>{searchTerm}</span>
               )}
             </React.Fragment>
           );
