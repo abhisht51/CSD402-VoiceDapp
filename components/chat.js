@@ -122,7 +122,7 @@ function Chat({ selectedChannel }) {
             onKeyPress={(e) => e.key === "Enter" && sendMessage()}
             onChange={(e) => setNewMessage(e.target.value)}
             placeholder={`Message in #${
-              selectedChannel ? selectedChannel : "This Channel"
+              selectedChannel ? selectedChannel.channelName : "This Channel"
             }`}
           />
         </div>
