@@ -20,12 +20,8 @@ export default function VideoCall() {
   const onDyteInit = (meeting) => {
     //meeting ended event
     meeting.on(meeting.Events.meetingEnded, () => {
-      router.push("/chatpage");
+      // router.push("/chatpage");
     });
-
-    meeting.on(meeting.Events.participantLeave, (participant) =>
-      router.push("/chatpage")
-    );
   };
 
   return (
@@ -46,10 +42,10 @@ export default function VideoCall() {
               fullscreen: true,
             },
             header: true,
-            logo: "https://raw.githubusercontent.com/abhisht51/CSD402-VoiceDapp/cdc73a7517c4f388289b9f1ecd119ce803a61cdf/public/voice_app_logo.svg?token=AN72G63C7256BNNVGV3ELU3BUO5EO",
+            logo: "https://raw.githubusercontent.com/basic-bhavya/gun-app/93a1d82ee8ee026a692c20fdd7cea6b792546050/voice_app_logo.svg",
             colors: {
-              primary: "#fff",
-              secondary: "#262626",
+              primary: "#404eed",
+              secondary: "#2f3135",
               textPrimary: "#EEEEEE",
               videoBackground: "#1A1A1A",
             },
