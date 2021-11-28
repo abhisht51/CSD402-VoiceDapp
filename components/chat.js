@@ -85,7 +85,7 @@ function Chat({ selectedChannel }) {
 
   useEffect(() => {
     setSelectedChannel(channels[0]);
-  }, []);
+  }, [channels]);
 
   useEffect(() => {
     getMessages();

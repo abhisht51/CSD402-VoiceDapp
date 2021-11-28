@@ -7,12 +7,10 @@ import styles from "../styles/app.module.css";
 
 export default function ChatPage() {
   const {
-    usernameState: { username },
-    selectedChannelState: { selectedChannelstate, setSelectedChannel },
+    selectedChannelState: { selectedChannelstate },
   } = useContext(UserContext);
 
   let selectedChannel = selectedChannelstate;
-  const router = useRouter();
 
   return (
     <div className={styles.app}>
