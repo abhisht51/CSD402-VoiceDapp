@@ -185,7 +185,6 @@ export default function Login() {
             {role === "professor" && (
               <div className={styles.input_field}>
                 <IoCodeWorking className={styles.icons} />
-                {/* <FaBookOpen className={styles.icons} /> */}
                 <input
                   type="text"
                   placeholder="Course Code"
