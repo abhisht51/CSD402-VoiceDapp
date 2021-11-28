@@ -1,5 +1,4 @@
 const axios = require("axios");
-// const cors = require("cors");
 
 /**
  * API to make a call to dyte server get all the meetings
