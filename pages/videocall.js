@@ -19,7 +19,8 @@ export default function VideoCall() {
   const onDyteInit = (meeting) => {
     //meeting ended event
     meeting.on(meeting.Events.meetingEnded, () => {
-      router.push("/chatpage");
+      router.back();
+      router.reload();
     });
 
     meeting.on(meeting.Events.participantLeave, (participant) =>
