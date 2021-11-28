@@ -7,8 +7,8 @@ const UserContext = createContext();
 
 const gun = Gun({
   peers: [
-    "https://gun-server-app.herokuapp.com/gun",
-    // , "http://localhost:3000"
+    // "https://gun-server-app.herokuapp.com/gun",
+    , "http://localhost:3000"
   ],
 });
 
