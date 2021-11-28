@@ -27,7 +27,6 @@ function Chat({ selectedChannel }) {
   const [searchValue, setSearchValue] = useState("");
   const [filterMessages, setFilterMessages] = useState([]);
   const [isFiltering, setIsFiltering] = useState(false);
-  const [isFirstChannelLoadaed, setIsFirstChannelLoadaed] = useState(false);
 
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
@@ -86,11 +85,8 @@ function Chat({ selectedChannel }) {
   };
 
   useEffect(() => {
-    if (!isFirstChannelLoadaed) {
       setSelectedChannel(channels[0]);
-      setIsFirstChannelLoadaed(true);
-    }
-  }, [channels]);
+  }, []);
 
   useEffect(() => {
     getMessages();
