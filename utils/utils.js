@@ -27,7 +27,8 @@ export const createRoom = async (title) => {
  * @param isHost - specific role - controlled on the dashboard
  * @returns authToken to be used to join the meeting
  */
-export const joinRoom = async (meetingId, roomName, isHost) => {
+export const joinRoom = async (meetingId, roomName, isHost, userName) => {
+  console.log(meetingId, roomName);
   const resp = await axios({
     url: `/api/participant`,
     method: "POST",
@@ -36,6 +37,7 @@ export const joinRoom = async (meetingId, roomName, isHost) => {
     },
     data: {
       isHost: isHost,
+      userName: userName,
       meetingId: meetingId,
     },
   });
