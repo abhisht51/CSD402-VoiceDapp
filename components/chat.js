@@ -5,6 +5,7 @@ import Message from "../components/Message";
 import { UserContext } from "../context/userContext";
 import { useContext, useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
+import { IoSend } from "react-icons/io5";
 
 function Chat({ selectedChannel }) {
   const {
@@ -120,11 +121,21 @@ function Chat({ selectedChannel }) {
             className={styles.send_message_input}
             onKeyPress={(e) => e.key === "Enter" && sendMessage()}
             onChange={(e) => setNewMessage(e.target.value)}
-            placeholder={`Message in #This Channel`}
+            placeholder={`Message in #${
+              selectedChannel ? selectedChannel : "This Channel"
+            }`}
           />
         </div>
 
-        <div className={styles.chat__inputIcons}></div>
+        <div className={styles.chat__inputIcons}>
+          <button
+            onClick={() => {
+              sendMessage();
+            }}
+          >
+            <IoSend className={styles.chat__inputIcon} fontSize="large" />
+          </button>
+        </div>
       </div>
     </div>
   );
