@@ -86,7 +86,8 @@ function Sidebar({ selectedChannel }) {
               joinRoom(
                 selectedChannel.courseRoomId,
                 selectedChannel.courseRoomName,
-                userType === "professor"
+                true,
+                username
               )
                 .then((authToken) => {
                   setMeetingAuthToken(authToken);

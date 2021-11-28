@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/userContext";
 import { DyteMeeting } from "dyte-client";
 import { useRouter } from "next/router";
+import logo from "../public/dyte_logo_white.svg";
 const orgId = process.env.NEXT_PUBLIC_DYTE_ORG_ID;
 
 export default function VideoCall() {
@@ -45,7 +46,7 @@ export default function VideoCall() {
               fullscreen: true,
             },
             header: true,
-            logo: "./public/laptop.svg",
+            logo: "https://raw.githubusercontent.com/abhisht51/CSD402-VoiceDapp/cdc73a7517c4f388289b9f1ecd119ce803a61cdf/public/voice_app_logo.svg?token=AN72G63C7256BNNVGV3ELU3BUO5EO",
             colors: {
               primary: "#fff",
               secondary: "#262626",
