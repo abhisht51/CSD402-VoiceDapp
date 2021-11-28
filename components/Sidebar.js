@@ -54,7 +54,6 @@ function Sidebar({ selectedChannel }) {
           <div className={styles.sidebar__header}>
             <h4>Text Channels</h4>
           </div>
-          <FaPlus className={styles.sidebar__addChannel} />
         </div>
         <div className={styles.sidebar__channelsList}>
           {channels.map((channel, index) => (
@@ -87,7 +86,8 @@ function Sidebar({ selectedChannel }) {
               joinRoom(
                 selectedChannel.courseRoomId,
                 selectedChannel.courseRoomName,
-                userType === "professor"
+                true,
+                username
               )
                 .then((authToken) => {
                   setMeetingAuthToken(authToken);

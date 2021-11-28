@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/userContext";
 import { DyteMeeting } from "dyte-client";
 import { useRouter } from "next/router";
+import logo from "../public/dyte_logo_white.svg";
 const orgId = process.env.NEXT_PUBLIC_DYTE_ORG_ID;
 
 export default function VideoCall() {
@@ -22,10 +23,6 @@ export default function VideoCall() {
       router.back();
       router.reload();
     });
-
-    meeting.on(meeting.Events.participantLeave, (participant) =>
-      router.push("/chatpage")
-    );
   };
 
   return (
@@ -46,10 +43,10 @@ export default function VideoCall() {
               fullscreen: true,
             },
             header: true,
-            logo: "./public/laptop.svg",
+            logo: "https://raw.githubusercontent.com/basic-bhavya/gun-app/93a1d82ee8ee026a692c20fdd7cea6b792546050/voice_app_logo.svg",
             colors: {
-              primary: "#fff",
-              secondary: "#262626",
+              primary: "#404eed",
+              secondary: "#2f3135",
               textPrimary: "#EEEEEE",
               videoBackground: "#1A1A1A",
             },
