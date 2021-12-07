@@ -72,31 +72,31 @@ function Sidebar({ selectedChannel }) {
         </div>
       </div>
 
-      <div className={styles.sidebar__voice}>
+      <div
+        className={styles.sidebar__voice}
+        onClick={async () => {
+          joinRoom(
+            selectedChannel.courseRoomId,
+            selectedChannel.courseRoomName,
+            true,
+            username
+          )
+            .then((authToken) => {
+              setMeetingAuthToken(authToken);
+            })
+            .then(() => {
+              router.push("/videocall");
+            });
+        }}
+      >
         <FaSignal className={styles.sidebar__voiceIcon} fontSize="large" />
-
         <div className={styles.sidebar__voiceInfo}>
-          <h3>Connect to Voice</h3>
+          <h3>Join Call</h3>
           <p>Stream</p>
         </div>
 
         <div className={styles.sidebar__voiceIcons}>
-          <button
-            onClick={async () => {
-              joinRoom(
-                selectedChannel.courseRoomId,
-                selectedChannel.courseRoomName,
-                true,
-                username
-              )
-                .then((authToken) => {
-                  setMeetingAuthToken(authToken);
-                })
-                .then(() => {
-                  router.push("/videocall");
-                });
-            }}
-          >
+          <button>
             <a>
               <FaPhoneAlt className={styles.right_icons} />
             </a>
