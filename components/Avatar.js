@@ -40,7 +40,7 @@ function Avatar({ name, sidebar }) {
 
   return (
     <button onClick={sidebar && handleSignout} className={sidebar && styles.tooltip}>
-      <span className={styles.tooltiptext}>Logout</span>
+      {sidebar && <span className={styles.tooltiptext}>Logout</span>}
       <div className={styles.avatar}>
         <h4 className={styles.avatar__text}>{getInitials(name)}</h4>
       </div>
